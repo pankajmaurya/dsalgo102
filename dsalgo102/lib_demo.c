@@ -9,7 +9,7 @@ typedef struct demo {
 int compare_demo(void* a, void* b) {
 	Demo* da = (Demo*) a;
 	Demo* db = (Demo*) b;
-	printf("Comparing 2 value %d and %d\n", da->x, db->x);
+	printf("Comparing values: %d and %d\n", da->x, db->x);
 	return (da->x - db->x);
 }
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
         printf("Linked list size : %d\n", ll->size);
         
 	// Now remove the node with payload = d
-	for (int i = 6; i <= 10; i++) {
+	for (int i = 6; i < 14; i++) {
 		Demo* d = malloc(sizeof(Demo));
 		d->x = i;
 		remove_ll_cmp(ll, d);

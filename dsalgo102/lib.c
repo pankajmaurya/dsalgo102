@@ -37,7 +37,7 @@ Nodeptr remove_ll_cmp(llptr ll, void *item) {
 	}
 
 	Nodeptr cur = ll->head;
-	if (cur->val == item) {
+	if (ll->callback_compare(cur->val, item) == 0) {
 		if (ll->tail == ll->head) {
 			ll->tail = NULL;
 		}
@@ -51,7 +51,9 @@ Nodeptr remove_ll_cmp(llptr ll, void *item) {
 		cur = cur->next;
 		if (ll->callback_compare(cur->val, item) == 0) {
 			prev->next = cur->next;
-			cur->next->prev = prev;
+			if (cur->next != NULL) {
+				cur->next->prev = prev;
+			}
 			if (cur == ll->tail) {
 				ll->tail = prev;
 			}
