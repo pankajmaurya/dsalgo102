@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include "lib.h"
 
-typedef struct demo {
+typedef struct appdata {
 	int x;
-} Demo;
+} AppData;
 
 int compare_demo(void* a, void* b) {
-	Demo* da = (Demo*) a;
-	Demo* db = (Demo*) b;
+	AppData* da = (AppData*) a;
+	AppData* db = (AppData*) b;
 	printf("Comparing values: %d and %d\n", da->x, db->x);
 	return (da->x - db->x);
 }
@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
     printf("Linked list size : %d\n", ll->size);
 
 	for (int i = 1; i <= 10; i++) {
-		Demo* d = malloc(sizeof(Demo));
+		AppData* d = malloc(sizeof(AppData));
 		d->x = i;
 		add(ll, d);
 	}
@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
         
 	// Now remove the node with payload = d
 	for (int i = 6; i < 14; i++) {
-		Demo* d = malloc(sizeof(Demo));
+		AppData* d = malloc(sizeof(AppData));
 		d->x = i;
 		remove_ll_cmp(ll, d);
 	}

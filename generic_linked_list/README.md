@@ -1,4 +1,4 @@
 ```
-make lib_demo
-./lib_demo
+make generic_ll_app
+./generic_ll_app
 ```
