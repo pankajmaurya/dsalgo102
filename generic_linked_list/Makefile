@@ -22,6 +22,12 @@ lib_demo.o: lib_demo.c lib.h lib.o
 lib.o: lib.c lib.h
 	$(CC) $(CFLAGS) -c lib.c
 
+scratch: scratch.o
+	$(CC) $(CFLAGS) -o scratch scratch.o
+
+scratch.o: scratch.c
+	$(CC) $(CFLAGS) -c scratch.c
+
 clean:	
-	rm -rf *.o lib_demo generic_ll_app lib_hashmap_demo
+	rm -rf *.o lib_demo generic_ll_app lib_hashmap_demo scratch
 

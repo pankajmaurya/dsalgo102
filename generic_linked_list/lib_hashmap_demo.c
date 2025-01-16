@@ -21,6 +21,11 @@ int main(int argc, char **argv) {
 		d->x = i;
 		add_mapping(ghm, d, d);
 	}
+
+	Demo* key = malloc(sizeof(Demo));
+	key->x = 7;
+	Demo *d = (Demo*) get_value(ghm, key);
+	printf("get_value returned : %d\n", d->x);
     return 0;
 }
 

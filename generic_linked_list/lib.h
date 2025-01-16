@@ -2,9 +2,12 @@
 #define __LIB_H__
 
 #define MAX_LL_LEN 1000
-// Function pointers to support comparison of value
+// Function pointer to support comparison of value
 typedef int(*CallbackCompare)(void *a, void *b);
-//typedef bool(*CallbackIterate)(int index, Node *node);
+
+// Function pointer to support iteration of linked list.
+// a return value of 0 indicates false and means to end the iteration.
+typedef int(*CallbackIterate)(void *a);
 
 // A doubly linked list
 typedef struct node *Nodeptr;
@@ -24,10 +27,11 @@ typedef struct linkedlist {
 typedef struct linkedlist *llptr;
 
 void init(llptr ll, CallbackCompare compare_callback);
+void init_for_iteration(llptr ll, CallbackCompare compare_callback, CallbackIterate callback_iterate);
 int add(llptr ll, void *item);
 Nodeptr remove_ll_ref(llptr ll, void *item);
 Nodeptr remove_ll_cmp(llptr ll, void *item);
-//void iterate_ll(llptr ll, CallbackIterate iterate_callback);
+Nodeptr scan_ll(llptr ll, CallbackIterate callback_iterate);
 
 /// Hash map structures and methods below ///
 typedef struct generic_mapping {
@@ -45,6 +49,7 @@ typedef int(*Hasher)(void *key);
 typedef struct generic_hash_map {
 	GenericHashMapBucket* buckets;
 	Hasher hasher;
+	int num_buckets;
 } GenericHashMap;
 
 typedef struct generic_hash_map *ghmptr;
