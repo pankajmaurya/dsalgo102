@@ -98,3 +98,16 @@ Nodeptr remove_ll_ref(llptr ll, void *item) {
 
 	return NULL;
 }
+
+
+void init_hash_map(ghmptr ghm, Hasher hasher, int num_buckets) {
+
+}
+
+void add_mapping(ghmptr ghm, void* key, void* value) {
+
+}
+
+void* get_value(ghmptr ghm, void *key) {
+	return NULL;
+}

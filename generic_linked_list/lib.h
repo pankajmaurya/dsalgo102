@@ -29,6 +29,22 @@ Nodeptr remove_ll_ref(llptr ll, void *item);
 Nodeptr remove_ll_cmp(llptr ll, void *item);
 //void iterate_ll(llptr ll, CallbackIterate iterate_callback);
 
+// Definitions for a hashmap with generic key and generic value.
+typedef struct generic_hash_map
+{
+	void *key;
+	void *value;
+} GenericHashMap;
+
+typedef struct generic_hash_map *ghmptr;
+
+typedef int(*Hasher)(void *key);
+
+void init_hash_map(ghmptr ghm, Hasher hasher, int num_buckets);
+
+void add_mapping(ghmptr ghm, void* key, void* value);
+
+void* get_value(ghmptr ghm, void *key);
 
 #endif
 
